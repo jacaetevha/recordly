@@ -1,0 +1,13 @@
+<div class="form-group <%= 'has-error' if user.errors.keys.include?(field_name) %>">
+  <%= form.label field_name, field_name.to_s.humanize, class: "col-sm-2 control-label" %>
+  <div class="col-sm-5">
+    <% if @user.errors[field_name].present? %>
+    <div class='text-danger'>
+      <%= "#{field_name.to_s.humanize} #{@user.errors[field_name].uniq.to_sentence}" %>
+    </div>
+    <% end %>
+    <% form_control_options = {class: 'form-control'} %>
+    <% form_control_options[:tabindex] = tab_index if defined? :tab_index %>
+    <%= form.send field_type, field_name, form_control_options %>
+  </div>
+</div>
