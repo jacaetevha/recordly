@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.app {
+  padding: 90px 15px;
+}
+.navbar-nav > li.current-user {
+  color: #eee;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+}
