@@ -27,6 +27,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'puma'
 
+gem 'rails_12factor', group: :production
+
 group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
