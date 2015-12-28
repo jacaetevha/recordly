@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize
 
   # GET /songs
   # GET /songs.json

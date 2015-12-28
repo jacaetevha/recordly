@@ -1,5 +1,6 @@
 class RecordsController < ApplicationController
   before_action :set_record, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize
 
   # GET /records
   # GET /records.json
