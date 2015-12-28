@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :artists
   # account creation routes
   get '/signup' => 'users#new'
   post '/users' => 'users#create'

@@ -1,0 +1,5 @@
+<%= form_for @artist, html: {class: 'form form-horizontal'} do |f| %>
+  <%= render partial: 'shared/form_field', locals: { form: f, model: @artist, field_name: :name, field_type: :text_field, tab_index: 1 } %>
+
+  <%= render partial: 'shared/submission_button', locals: { form: f, text: 'Create', tab_index: 2 } %>
+<% end %>

@@ -5,18 +5,14 @@
 <% end %>
 
 <%= form_for @user, url: users_path, html: {class: 'form form-horizontal'} do |f| %>
-  <%= render partial: 'shared/form_field', locals: { form: f, user: @user, field_name: :name, field_type: :text_field, tab_index: 1 } %>
+  <%= render partial: 'shared/form_field', locals: { form: f, model: @user, field_name: :name, field_type: :text_field, tab_index: 1 } %>
 
-  <%= render partial: 'shared/form_field', locals: { form: f, user: @user, field_name: :email, field_type: :text_field, tab_index: 2 } %>
+  <%= render partial: 'shared/form_field', locals: { form: f, model: @user, field_name: :email, field_type: :text_field, tab_index: 2 } %>
 
-  <%= render partial: 'shared/form_field', locals: { form: f, user: @user, field_name: :password, field_type: :password_field, tab_index: 3 } %>
+  <%= render partial: 'shared/form_field', locals: { form: f, model: @user, field_name: :password, field_type: :password_field, tab_index: 3 } %>
 
-  <%= render partial: 'shared/form_field', locals: { form: f, user: @user, field_name: :password_confirmation, field_type: :password_field, tab_index: 4 } %>
+  <%= render partial: 'shared/form_field', locals: { form: f, model: @user, field_name: :password_confirmation, field_type: :password_field, tab_index: 4 } %>
 
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-5">
-      <%= f.submit "Signup!", class: 'btn btn-default', tabindex: 5 %>
-    </div>
-  </div>
+  <%= render partial: 'shared/submission_button', locals: { form: f, text: 'Sign up', tab_index: 5 } %>
 
 <% end %>
