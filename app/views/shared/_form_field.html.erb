@@ -1,9 +1,9 @@
-<div class="form-group <%= 'has-error' if user.errors.keys.include?(field_name) %>">
+<div class="form-group <%= 'has-error' if model.errors.keys.include?(field_name) %>">
   <%= form.label field_name, field_name.to_s.humanize, class: "col-sm-2 control-label" %>
   <div class="col-sm-5">
-    <% if @user.errors[field_name].present? %>
+    <% if model.errors[field_name].present? %>
     <div class='text-danger'>
-      <%= "#{field_name.to_s.humanize} #{@user.errors[field_name].uniq.to_sentence}" %>
+      <%= "#{field_name.to_s.humanize} #{model.errors[field_name].uniq.to_sentence}" %>
     </div>
     <% end %>
     <% form_control_options = {class: 'form-control'} %>

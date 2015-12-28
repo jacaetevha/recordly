@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :artists
   resources :records
   resources :songs
+
   # account creation routes
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
