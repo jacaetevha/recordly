@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "songs/show", type: :view do
+  let(:user) { new_user }
   let(:artist) { Artist.create name: 'artist' }
-  let(:record) { Record.create title: 'record', artist_ids: [artist.id] }
+  let(:record) { Record.create title: 'record', artist_ids: [artist.id], user_id: user.id }
   before(:each) do
     @song = assign(:song, Song.create!(title: "my great title", record_id: record.id))
   end

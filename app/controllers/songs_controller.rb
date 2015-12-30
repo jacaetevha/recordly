@@ -54,7 +54,7 @@ class SongsController < ApplicationController
     begin
       respond_to do |format|
         if @song.update(song_params)
-          format.html { redirect_to [@song.record, @song], notice: 'Song was successfully updated.' }
+          format.html { redirect_to @song.record, notice: 'Song was successfully updated.' }
           format.json { render :show, status: :ok, location: @song }
         else
           format.html { render :edit }
@@ -74,10 +74,9 @@ class SongsController < ApplicationController
   # DELETE /records/1/songs/1.json
   def destroy
     validate_parameters { return }
-    binding.pry
     @song.destroy
     respond_to do |format|
-      format.html { redirect_to songs_url, notice: 'Song was successfully destroyed.' }
+      format.html { redirect_to record_url(@song.record), notice: 'Song was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
