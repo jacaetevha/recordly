@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div class='row'>
+  <%= link_to 'Add song', new_record_song_path(@record), class: 'btn btn-primary' %>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @record.name %>
-</p>
+<br />
 
-<%= link_to 'Edit', edit_record_path(@record) %> |
-<%= link_to 'Back', records_path %>
+<div class='row'>
+  <div class='col-xs-5 single-record img-circle'>
+  </div>
+  <%= render partial: 'details', locals: { record: @record } %>
+</div>

@@ -1,4 +1,9 @@
-json.array!(@records) do |record|
-  json.extract! record, :id, :name
-  json.url record_url(record, format: :json)
+json.total @records.total_count
+json.count @records.count
+json.page @records.current_page
+
+json.records @records do |record|
+  json.extract! record, :id, :title, :created_at, :updated_at
+  json.favorite record.favorite?(current_user)
+  json.link record_path(record)
 end

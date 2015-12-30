@@ -1,9 +1,5 @@
 <h1 class="col-sm-offset-2">Create Account</h1>
 
-<% fields_with_errors = @user.errors.keys.map.with_object({}) do |name, hash| %>
-  <% hash[name] = 'has-error' %>
-<% end %>
-
 <%= form_for @user, url: users_path, html: {class: 'form form-horizontal'} do |f| %>
   <%= render partial: 'shared/form_field', locals: { form: f, model: @user, field_name: :name, field_type: :text_field, tab_index: 1 } %>
 

@@ -1,0 +1,25 @@
+<div id='records'>
+  <%= paginate @records, params: {controller: 'records', action: 'index', format: 'html'} %>
+
+  <p>
+    <% @records.each do |record| %>
+      <%= render partial: 'shared/record_header', locals: { record: record } %>
+      <%= render partial: 'inline_artists', locals: { record: record } %>
+      <% if record.songs.blank? %>
+        <div><%= link_to 'Add song', new_record_song_path(record), class: 'btn btn-primary' %></div>
+      <% else %>
+        <% record.songs.each do |song| %>
+          <div class='row song'>
+            <div class='col-xs-1'><%= song.ordinal %></div>
+            <div class='col-xs-2 time'>2:33</div>
+            <div class='col-xs-6 title'>
+              <%= favorite_widget song, favorite_record_song_path(record, song) %>
+              <%= link_to song.title, record_song_path(song.record, song) %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <br />
+    <% end %>
+  </p>
+</div>

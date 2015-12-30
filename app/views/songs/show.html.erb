@@ -1,9 +1,20 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: 'shared/record_header', locals: { record: @song.record } %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @song.name %>
-</p>
+<br />
 
-<%= link_to 'Edit', edit_song_path(@song) %> |
-<%= link_to 'Back', songs_path %>
+<div class='row'>
+  <div class='col-sm-1'><strong>Title:</strong></div>
+  <div class='col-sm-11'>
+    <%= favorite_widget @song, favorite_record_song_path(@song.record, @song) %>
+    <%= @song.title %>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-sm-1'><strong>Time:</strong></div>
+  <div class='col-sm-11'>2:33</div>
+</div>
+
+<br />
+
+<%= link_to 'Edit', edit_record_song_path(@song.record, @song), class: 'btn btn-default' %>

@@ -1,1 +1,1 @@
-json.extract! @artist, :id, :name, :created_at, :updated_at
+json.partial! 'show', locals: { artist: @artist }

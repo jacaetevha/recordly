@@ -1,11 +1,19 @@
 class ArtistsController < ApplicationController
-  before_action :set_artist, only: [:show, :edit, :update, :destroy]
+  before_action :set_artist, only: [:show, :edit, :update, :destroy, :favorite]
   before_filter :authorize
+  include MarkingFavorites
+
+  def model
+    @artist
+  end
 
   # GET /artists
   # GET /artists.json
   def index
-    @artists = Artist.all
+    @artists = Artist.all.
+      includes(:records).
+      page(params[:page]).
+      per(params[:per_page] || 5)
   end
 
   # GET /artists/1
@@ -26,7 +34,6 @@ class ArtistsController < ApplicationController
   # POST /artists.json
   def create
     @artist = Artist.new(artist_params)
-
     respond_to do |format|
       if @artist.save
         format.html { redirect_to @artist, notice: 'Artist was successfully created.' }
@@ -42,7 +49,7 @@ class ArtistsController < ApplicationController
   # PATCH/PUT /artists/1.json
   def update
     respond_to do |format|
-      if @artist.update(artist_params)
+      if artist_params.present? && @artist.update(artist_params)
         format.html { redirect_to @artist, notice: 'Artist was successfully updated.' }
         format.json { render :show, status: :ok, location: @artist }
       else

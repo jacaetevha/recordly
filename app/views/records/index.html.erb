@@ -1,27 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Records</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @records.each do |record| %>
-      <tr>
-        <td><%= record.name %></td>
-        <td><%= link_to 'Show', record %></td>
-        <td><%= link_to 'Edit', edit_record_path(record) %></td>
-        <td><%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Record', new_record_path %>
+<% if @records.blank? %>
+  <div class="jumbotron">
+    <h1>Hello, <%= current_user.name %></h1>
+    <p>You haven't added any records yet. Why don't you get started?</p>
+    <p>Use the <code>New Artist</code> or <code>New Record</code> buttons at the top of the site.</p>
+  </div>
+<% else %>
+  <%= render partial: 'records_list' %>
+<% end %>

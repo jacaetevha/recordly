@@ -29,6 +29,8 @@ gem 'puma'
 
 gem 'rails_12factor', group: :production
 
+gem 'kaminari'
+
 group :development, :test do
   gem 'pry'
   gem 'pry-byebug'

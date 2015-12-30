@@ -1,4 +1,7 @@
-json.array!(@artists) do |artist|
-  json.extract! artist, :id, :name
-  json.url artist_url(artist, format: :json)
+json.total @artists.total_count
+json.count @artists.count
+json.page @artists.current_page
+
+json.artists @artists do |artist|
+  json.partial! 'show', locals: { artist: artist }
 end

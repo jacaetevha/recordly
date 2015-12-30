@@ -1,1 +1,1 @@
-json.extract! @record, :id, :name, :created_at, :updated_at
+json.partial! 'show', locals: { record: @record, include_songs: true }

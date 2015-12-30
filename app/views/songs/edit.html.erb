@@ -1,6 +1,9 @@
-<h1>Editing Song</h1>
+<%= render partial: 'shared/record_header', locals: { record: @song.record } %>
 
-<%= render 'form' %>
+<br />
 
-<%= link_to 'Show', @song %> |
-<%= link_to 'Back', songs_path %>
+<div class='row'>
+  <div class='col-xs-6'>
+    <%= render 'form' %>
+  </div>
+</div>

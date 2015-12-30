@@ -22,6 +22,13 @@
       <div id="navbar" class="collapse navbar-collapse pull-right">
         <ul class="nav navbar-nav">
           <% if current_user %>
+            <li><%= link_to 'New Artist', new_artist_path, class: 'btn btn-xs btn-default' %></li>
+            <li>&nbsp;</li>
+            <li><%= link_to 'New Record', new_record_path, class: 'btn btn-xs btn-default' %></li>
+          <% end %>
+        </ul>
+        <ul class="nav navbar-nav">
+          <% if current_user %>
             <li class='current-user'><%= current_user.name %></li>
             <li><%= link_to 'Logout', logout_path %></li>
           <% else %>

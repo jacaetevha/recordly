@@ -1,7 +1,28 @@
 Rails.application.routes.draw do
-  resources :artists
-  resources :records
-  resources :songs
+  get 'errors/not_found'
+
+  get 'errors/unprocessable_entity'
+
+  get 'errors/internal_server_error'
+
+  get 'errors/bad_request'
+
+  resources :artists do
+    member do
+      patch '/favorite', action: 'favorite'
+    end
+  end
+
+  resources :records do
+    member do
+      patch '/favorite', action: 'favorite'
+    end
+    resources :songs do
+      member do
+        patch '/favorite', action: 'favorite'
+      end
+    end
+  end
 
   # account creation routes
   get '/signup' => 'users#new'

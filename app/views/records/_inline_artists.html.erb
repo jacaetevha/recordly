@@ -1,0 +1,4 @@
+<% record.artists.each do |artist| %>
+  <%= favorite_widget artist, favorite_artist_path(artist) %>
+  <%= link_to artist.name, artist %>
+<% end %>

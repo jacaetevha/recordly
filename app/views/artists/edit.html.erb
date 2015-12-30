@@ -1,6 +1,18 @@
-<h1>Editing Artist</h1>
+<table class='table table-condensed record-short'>
+  <tbody>
+    <tr>
+      <td class='image'>
+        <div class='record img-circle'>
+        </div>
+      </td>
+      <td class='link'>
+        <%= favorite_widget @artist, favorite_artist_path(@artist) %>
+        <%= link_to @artist.name, artist_path(@artist) %>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @artist %> |
-<%= link_to 'Back', artists_path %>
+<div class='row'>
+  <%= render 'form' %>
+</div>
