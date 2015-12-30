@@ -1,0 +1,20 @@
+<table class='table table-condensed record-short'>
+  <tbody>
+    <tr class='info'>
+      <td class='image'>
+        <div class='record img-circle'>
+        </div>
+      </td>
+      <td class='link'>
+        <%= favorite_widget record, favorite_record_path(record) %>
+        <%= link_to record.title, record_path(record) %>
+        
+        <span class='pull-right'>
+          <%= link_to record, method: :delete, remote: true, class: 'delete-record' do %>
+            <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
+          <% end %>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

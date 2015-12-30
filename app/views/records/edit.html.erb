@@ -1,0 +1,21 @@
+<table class='table table-condensed record-short'>
+  <tbody>
+    <tr>
+      <td class='image'>
+        <div class='record img-circle'>
+        </div>
+      </td>
+      <td class='link'>
+        <%= favorite_widget @record, favorite_record_path(@record) %>
+        <%= link_to @record.title, record_path(@record) %>
+      </td>
+      <td>
+        <%= link_to 'Add song', new_record_song_path(@record), class: 'btn btn-primary' %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class='row'>
+  <%= render 'form' %>
+</div>

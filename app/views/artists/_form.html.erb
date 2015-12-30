@@ -1,0 +1,12 @@
+<%= form_for @artist, html: {class: 'form form-horizontal'} do |f| %>
+  <div class='row'>
+    <div class='col-sm-4'>
+      <%= render partial: 'shared/form_field', locals: { form: f, model: @artist, field_name: :name, field_type: :text_field, tab_index: 1 } %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-offset-1 col-sm-2>'>
+      <%= render partial: 'shared/submission_button', locals: { form: f, text: 'Save', tab_index: 2 } %>
+    </div>
+  </div>
+<% end %>

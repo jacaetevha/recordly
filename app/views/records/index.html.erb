@@ -1,1 +1,9 @@
-under construction
+<% if @records.blank? %>
+  <div class="jumbotron">
+    <h1>Hello, <%= current_user.name %></h1>
+    <p>You haven't added any records yet. Why don't you get started?</p>
+    <p>Use the <code>New Artist</code> or <code>New Record</code> buttons at the top of the site.</p>
+  </div>
+<% else %>
+  <%= render partial: 'records_list' %>
+<% end %>

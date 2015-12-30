@@ -1,0 +1,25 @@
+<%= form_for [@song.record, @song] do |f| %>
+  <div class='row'>
+    <div class='col-xs-12'>
+      <div class='row'>
+      <%= render partial: 'shared/form_field', locals: { form: f, model: @song, field_name: :ordinal, field_type: :number_field, tab_index: 1, value: @song.ordinal || @song.record.songs.size + 1 } %>
+      </div>
+
+      <div class='row'>
+      <%= render partial: 'shared/form_field', locals: { form: f, model: @song, field_name: :title, field_type: :text_field, tab_index: 2 } %>
+      </div>
+
+      <div class='row'>
+      <%= render partial: 'shared/form_field', locals: { form: f, model: @song, field_name: :record_id, field_type: :hidden_field, tab_index: -1 } %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-xs-offset-5 col-xs-2'>
+        <%= render partial: 'shared/submission_button', locals: { form: f, text: 'Save', tab_index: 2 } %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<script type='text/javascript'>
+$('#song_ordinal').focus()
+</script>

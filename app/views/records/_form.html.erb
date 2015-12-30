@@ -1,0 +1,23 @@
+<%= form_for @record, html: {class: 'form form-horizontal'} do |f| %>
+  <div class='row'>
+    <div class='<%= @record.new_record? ? "col-sm-12" : "col-sm-6" %>'>
+      <%= render partial: 'shared/form_field', locals: { form: f, model: @record, field_name: :title, field_type: :text_field, tab_index: 1 } %>
+      <% content_for :artists_field do %>
+        <%= f.collection_select :artist_ids, Artist.all, :id, :name, {select: (defined?(artist) ? artist.id : nil), blank: false}, {multiple: true, tabindex: 2, size: [Artist.count, 10].min} %>
+      <% end %>
+      <%= render partial: 'shared/form_field', locals: { form: f, model: @record, field_name: :artists, field_type: :collection_select } %>
+    </div>
+
+    <% unless @record.new_record? %>
+    <div class='col-sm-6'>
+      <%= render partial: 'details', locals: { record: @record, size: 'col-sm-6', show_title: false, show_artists: false } %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class='row'>
+    <div class='col-sm-offset-10 col-sm-2>'>
+      <%= render partial: 'shared/submission_button', locals: { form: f, text: 'Save', tab_index: 2 } %>
+    </div>
+  </div>
+<% end %>

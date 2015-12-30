@@ -2,9 +2,9 @@
 
 <%= form_for @user, url: login_path, html: {class: 'form form-horizontal'} do |f| %>
 
-  <%= render partial: 'shared/form_field', locals: { form: f, user: @user, field_name: :email, field_type: :text_field, control_class: 'focus', tab_index: 1 } %>
+  <%= render partial: 'shared/form_field', locals: { form: f, model: @user, field_name: :email, field_type: :text_field, control_class: 'focus', tab_index: 1 } %>
 
-  <%= render partial: 'shared/form_field', locals: { form: f, user: @user, field_name: :password, field_type: :password_field, tab_index: 2 } %>
+  <%= render partial: 'shared/form_field', locals: { form: f, model: @user, field_name: :password, field_type: :password_field, tab_index: 2 } %>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-5">

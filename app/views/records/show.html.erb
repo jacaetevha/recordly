@@ -1,0 +1,11 @@
+<div class='row'>
+  <%= link_to 'Add song', new_record_song_path(@record), class: 'btn btn-primary' %>
+</div>
+
+<br />
+
+<div class='row'>
+  <div class='col-xs-5 single-record img-circle'>
+  </div>
+  <%= render partial: 'details', locals: { record: @record } %>
+</div>

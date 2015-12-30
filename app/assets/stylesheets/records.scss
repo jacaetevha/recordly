@@ -1,3 +1,90 @@
-// Place all the styles related to the records controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap/variables.scss";
+$small-record: 50px;
+$large-record: 150px;
+
+.records-list {
+  .action, .artists, .song-count, .title {
+    padding-left: 5px;
+  }
+  .artists {
+    font-style: italic;
+  }
+  .song-count::before { content: '('; }
+  .song-count::after  { content: ')'; }
+}
+
+.records-list td {
+  padding-bottom: 10px;
+}
+
+.records-list td, .records-list th {
+  padding-right: 10px;
+}
+
+.record {
+  background: no-repeat, center, url('/record.png');
+  background-color: $brand-primary;
+  background-size: $small-record;
+  border-radius: 35px;
+  width: $small-record;
+  height: $small-record;
+  text-align: center;
+  font: normal small-caps bold 70px/37px serif;
+  color: $brand-info;
+}
+
+.record-short {
+  tbody, tr, td {
+    border-top: 0px solid #fff !important;
+  }
+  .image {
+    width: 5%;
+    min-width: $small-record;
+  }
+  .link {
+    text-align: left;
+    width: 75%;
+    font-size: $small-record/2;
+    vertical-align: middle;
+  }
+}
+
+.single-record, .single-record-small {
+  background: no-repeat, center, url('/record.png');
+  background-color: $brand-info;
+  background-size: $large-record;
+  width: $large-record !important;
+  min-width: $large-record !important;
+  height: $large-record !important;
+  min-height: $large-record !important;
+}
+.single-record-small {
+  background-size: $small-record;
+  width: $small-record !important;
+  max-width: $small-record !important;
+  height: $small-record !important;
+  max-height: $small-record !important;
+}
+
+.single-record-details {
+}
+
+.artist {
+  font-style: italic;
+}
+
+.song {
+  .title {
+    font-weight: bold;
+  }
+  .time {
+    font-family: monospace, Monaco, Courier;
+  }
+}
+
+#record_artist_ids {
+  /* This is the multiselect artist box on record forms */
+  width: 20em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
