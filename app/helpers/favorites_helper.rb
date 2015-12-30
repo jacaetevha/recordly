@@ -16,6 +16,6 @@ module FavoritesHelper
   end
 
   def glyph_class_for_favoriting(model)
-    model.favorite?(current_user) ? 'text-success' : 'text-muted'
+    model.favorite? ? 'text-success' : 'text-muted'
   end
 end

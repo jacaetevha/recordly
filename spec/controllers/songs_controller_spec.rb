@@ -119,17 +119,19 @@ RSpec.describe SongsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested song" do
-      song = Song.create! valid_attributes
+      song = Song.create!(valid_attributes).tap do |s|
+        s.current_user = user
+        s.mark_as_favorite!
+      end
       expect {
         delete :destroy, {record_id: record.id, id: song.to_param}, valid_session
       }.to change(Song, :count).by(-1)
     end
 
     it "redirects to the songs list" do
-      song = Song.create! valid_attributes
+      song = Song.create!(valid_attributes)
       delete :destroy, {record_id: record.id, id: song.to_param}, valid_session
       expect(response).to redirect_to(record_url(record))
     end
   end
-
 end

@@ -2,10 +2,18 @@ require 'rails_helper'
 
 RSpec.describe "songs/edit", type: :view do
   let(:user) { new_user }
-  let(:artist) { Artist.create name: 'artist' }
-  let(:record) { Record.create title: 'record', artist_ids: [artist.id], user_id: user.id }
+  let(:artist) do
+    Artist.create(name: 'artist').tap { |a| a.current_user = user }
+  end
+  let(:record) do
+    assign(:record, Record.create(title: 'record', artist_ids: [artist.id], user_id: user.id)).tap do |r|
+      r.current_user = user
+    end
+  end
   before(:each) do
-    @song = assign(:song, Song.create!(title: "my great title", record_id: record.id))
+    @song = assign(:song, Song.create!(title: "my great title", record_id: record.id)).tap do |s|
+      s.current_user = user
+    end
   end
 
   it "renders the edit song form" do

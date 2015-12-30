@@ -128,7 +128,8 @@ render_views
   describe "DELETE #destroy" do
     let(:record) do
       Record.create!(valid_attributes.merge(user_id: user.id)).tap do |r|
-        r.mark_as_favorite! user
+        r.current_user = user
+        r.mark_as_favorite!
       end
     end
 
@@ -145,5 +146,4 @@ render_views
       expect(response).to redirect_to(records_url)
     end
   end
-
 end

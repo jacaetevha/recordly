@@ -8,7 +8,7 @@ module MarkingFavorites
   # PATCH /:model/:id.js
   # PATCH /:model/:id.json
   def favorite
-    @model = model
+    @model = set_current_user_on model
     @model.toggle_favorite!
     respond_to do |format|
       format.json { render template: "#{@model.class}/show", formats: [:json], handlers: ["jbuilder"] }
@@ -19,5 +19,10 @@ module MarkingFavorites
 
   def model
     raise NotImplementedError, 'including class should define this'
+  end
+
+  def set_current_user_on(model)
+    model.current_user = current_user
+    model
   end
 end

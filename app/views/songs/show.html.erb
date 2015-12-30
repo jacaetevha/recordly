@@ -1,11 +1,11 @@
-<%= render partial: 'shared/record_header', locals: { record: @song.record } %>
+<%= render partial: 'shared/record_header', locals: { record: @record } %>
 
 <br />
 
 <div class='row'>
   <div class='col-sm-1'><strong>Title:</strong></div>
   <div class='col-sm-11'>
-    <%= favorite_widget @song, favorite_record_song_path(@song.record, @song) %>
+    <%= favorite_widget @song, favorite_record_song_path(@record, @song) %>
     <%= @song.title %>
   </div>
 </div>
