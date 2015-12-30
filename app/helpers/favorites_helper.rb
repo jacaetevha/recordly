@@ -1,5 +1,6 @@
 module FavoritesHelper
   def favorite_widget(model, favorite_path)
+    model.current_user ||= current_user
     link_options = {
       "href"        => favorite_path,
       "data-method" => :patch,

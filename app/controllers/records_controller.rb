@@ -13,10 +13,9 @@ class RecordsController < ApplicationController
     @records = current_user.
       records.
       order(:ordinal_letter, :title).
-      includes(:artists).
+      includes(:artists, :songs).
       page(params[:page]).
       per(params[:per_page] || 5)
-    @records.each { |r| r.current_user = current_user }
     respond_to do |format|
       format.html {}
       format.json {}
@@ -89,9 +88,7 @@ class RecordsController < ApplicationController
 
   private
     def set_record
-      @record = Record.find(params[:id]).tap do |r|
-        r.current_user = current_user
-      end
+      @record = Record.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       if json_request?
         render_bad_request { yield }

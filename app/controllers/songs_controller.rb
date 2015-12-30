@@ -90,17 +90,13 @@ class SongsController < ApplicationController
     end
 
     def validate_parameters
-      @song = Song.find(params[:id]).tap do |s|
-        s.current_user = current_user
-      end
+      @song = Song.find(params[:id])
 
       if @song.record_id != params[:record_id].to_i
         render_bad_request { yield }
       end
 
-      @record = Record.find(params[:record_id]).tap do |r|
-        r.current_user = current_user
-      end
+      @record = Record.find(params[:record_id])
     rescue ActiveRecord::RecordNotFound
       if json_request?
         render_bad_request { yield }
